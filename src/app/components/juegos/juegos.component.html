@@ -1,0 +1,32 @@
+
+
+<ul class="juegos" *ngFor="let juego of juegos">
+  <li><img src="{{juego.imagen}}"></li><br>
+  
+  <li id="titulo">{{juego.id}}</li><br>
+  
+  <h3>Sinópsis</h3>
+  <li id="sinopsis">{{juego.sinopsis}}</li><br>
+  
+  <h3>Desarrollador:</h3>
+  <li>{{juego.desarrollador}}</li><br>
+
+  <h3>Director:</h3>
+  <li>{{juego.director}}</li><br>
+
+  <h3>Géneros:</h3>
+    <ul *ngFor="let genre of juego.genero" > <!--un for each genre(variable creada para iterar) en el array de generos-->
+      <li>{{genre}} </li>
+    </ul>
+    
+  <h3>Modo:</h3>
+  <ul *ngFor="let mod of juego.modo" >
+    <li>{{mod}} </li>
+  </ul>
+
+  <h3>Plataformas:</h3>
+      <ul *ngFor="let platf of juego.plataformas" >
+        <li>{{platf}} </li>
+      </ul>
+</ul>
+

@@ -1,0 +1,12 @@
+
+#busca{
+    margin: 50% auto;
+}
+
+
+
+h1, input, button{
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+}
