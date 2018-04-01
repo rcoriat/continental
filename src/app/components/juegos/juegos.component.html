@@ -1,32 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="juegoauxliar.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300" rel="stylesheet" type="text/css">
+    <title>juego</title>
+</head>
+<body>
+    <header>
+        <b>Continental Search</b>
+        <img src="">
+    </header>
+    <section id='tecnicos'>
+        <div id='imagen'>
+            <img src="371660-the-last-guardian-collector-s-edition-playstation-4-other.jpg">
+        </div>
+        <div id='texto'>
+            <p id='titulojuego'>The Last Guardian</p>
+            <ul id="datos">
+                <li>Director: Fumito Ueda</li>
+                <li>Desarrollador: Japan Studio</li>
+                <li>Año: 2016</li>
+                <li>Genero(s): Aventura, Puzzle</li>
+                <li>Compositor: Takeshi Furukawa</li>
+                <li>Modo(s): Un jugador</li>
+            </ul>
+        </div>
+    </section>
+    <section id='sinopsis'>
+        <p class='seccion'>Sinopsis</p>
+        <p id='textosinopsis'>La historia de The Last Guardian sigue a un niño que está tratando de escapar de un entorno parecido a las ruinas de un gran castillo expansivo. El niño ha sido secuestrado "en extrañas circunstancias" y termina descubriendo a una gigantesca criatura emplumada, que se asemeja a un grifo , llamado Trico (トリコ Toriko). El juego girará en torno a la amistad que se desarrolla entre el niño y Trico. En un principio Trico será hostil hacia el chico, pero durante el transcurso del juego, los dos van a desarrollar La historia de The Last Guardian sigue a un niño que está tratando de escapar de un entorno parecido a las ruinas de un gran castillo expansivo. El niño ha sido secuestrado "en extrañas circunstancias" y termina descubriendo a una gigantesca criatura emplumada, que se asemeja a un grifo , llamado Trico (トリコ Toriko). El juego girará en torno a la amistad que se desarrolla entre el niño y Trico. En un principio Trico será hostil hacia el chico, pero durante el transcurso del juego, los dos van a desarrollar un gran apego emocional el uno al otro.un gran apego emocional el uno al otro.</p>
+    </section>
+    <section id='sinopsis'>
+        <p class='seccion'>Media</p><br>
+        <iframe src="https://www.youtube.com/embed/fL2zzgW6YOo" frameborder="1" width="720" height="440"></iframe>
+    </section>
 
+    <a href="pagauxiliar.html">
+        <input id="botonv" type="button" value="Volver" >
+    </a>
 
-<ul class="juegos" *ngFor="let juego of juegos">
-  <li><img src="{{juego.imagen}}"></li><br>
-  
-  <li id="titulo">{{juego.id}}</li><br>
-  
-  <h3>Sinópsis</h3>
-  <li id="sinopsis">{{juego.sinopsis}}</li><br>
-  
-  <h3>Desarrollador:</h3>
-  <li>{{juego.desarrollador}}</li><br>
-
-  <h3>Director:</h3>
-  <li>{{juego.director}}</li><br>
-
-  <h3>Géneros:</h3>
-    <ul *ngFor="let genre of juego.genero" > <!--un for each genre(variable creada para iterar) en el array de generos-->
-      <li>{{genre}} </li>
-    </ul>
-    
-  <h3>Modo:</h3>
-  <ul *ngFor="let mod of juego.modo" >
-    <li>{{mod}} </li>
-  </ul>
-
-  <h3>Plataformas:</h3>
-      <ul *ngFor="let platf of juego.plataformas" >
-        <li>{{platf}} </li>
-      </ul>
-</ul>
+    <footer>Continental Search     @Team Raquel</footer>
+</body>
+</html>
 
