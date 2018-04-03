@@ -16,7 +16,7 @@ juegosCollection: AngularFirestoreCollection<Juego>;
 juegos: Observable<Juego[]>;
 juegosArray: Juego[];
 juegoactual: Juego;
-generoBuscado: Observable<Juego[]>;
+generoBuscado: Juego[];
 
 
   constructor(public afs: AngularFirestore) {
@@ -47,7 +47,8 @@ generoBuscado: Observable<Juego[]>;
     }
 
     this.busquedaGenero(this.juegoactual.genero);
-    
+    return this.generoBuscado;
+
   }
 
 
@@ -55,7 +56,8 @@ generoBuscado: Observable<Juego[]>;
     this.juegosCollection = this.afs.collection('juegos', ref => ref.where('genero', '==', gen));
     this.juegos = this.juegosCollection.valueChanges();
     this.juegos.subscribe(prueba => {
-      console.log(prueba)
+      console.log(prueba);
+      this.generoBuscado = prueba;
     })
   }
 }

@@ -1,6 +1,7 @@
 
 export interface Juego {
     id?: string;
+    imagen:string;
     salida: number;
     dedicacion?: number;
     desarrollador?: string;
