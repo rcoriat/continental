@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/combineLatest';
 import { Juego } from '../models/Juego';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class JuegoService {
@@ -14,6 +15,7 @@ juegosCollection: AngularFirestoreCollection<Juego>;
 juegos: Observable<Juego[]>;
 juegosArray: Juego[];
 juegoactual: Juego;
+generosArray: Juego[];
 
 
   constructor(public afs: AngularFirestore) {
@@ -25,8 +27,6 @@ juegoactual: Juego;
         return data;
       });
     });
-
-    let i=0;
 
     this.juegos.subscribe(prueba => {
       this.juegosArray = prueba;
@@ -45,7 +45,29 @@ juegoactual: Juego;
       }
     }
 
-    console.log(this.juegoactual);
+    for(let i=0; i<this.juegoactual.genero.length; i++){
+      this.busquedaGenero(this.juegoactual.genero[i]);
+    }
+  }
+
+
+
+  busquedaGenero(titulo: string){
+    const genero$ = new Subject<string>();
+    const queryObservable = genero$.switchMap(gen =>
+    afs.collection('juegos', ref => ref.where('genero', '==', size)).valueChanges();
+    );  
+
+    // subscribe to changes
+    queryObservable.subscribe(queriedItems => {
+      console.log(queriedItems);  
+    });
+
+    // trigger the query
+    size$.next('large');
+
+    // re-trigger the query!!!
+    size$.next('small');  
 
   }
 

@@ -5,7 +5,7 @@ export interface Juego {
     dedicacion?: number;
     desarrollador?: string;
     director?: string;
-    genero?:string[];
+    genero?:string;
     modo?: string[];
     plataformas?: string[];
     sinopsis?: string;
