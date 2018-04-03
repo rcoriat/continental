@@ -15,7 +15,7 @@ juegosCollection: AngularFirestoreCollection<Juego>;
 juegos: Observable<Juego[]>;
 juegosArray: Juego[];
 juegoactual: Juego;
-generosArray: Juego[];
+generoBuscado: Observable<Juego[]>;
 
 
   constructor(public afs: AngularFirestore) {
@@ -45,33 +45,25 @@ generosArray: Juego[];
       }
     }
 
-    for(let i=0; i<this.juegoactual.genero.length; i++){
-      this.busquedaGenero(this.juegoactual.genero[i]);
-    }
+    this.busquedaGenero(this.juegoactual.genero);
+    
   }
 
 
 
-  busquedaGenero(titulo: string){
-    const genero$ = new Subject<string>();
-    const queryObservable = genero$.switchMap(gen =>
-    afs.collection('juegos', ref => ref.where('genero', '==', size)).valueChanges();
-    );  
-
-    // subscribe to changes
-    queryObservable.subscribe(queriedItems => {
-      console.log(queriedItems);  
+  busquedaGenero(gen: string){
+    this.juegosCollection = this.afs.collection('juegos', ref => ref.where('genero', '==', 'gen'));
+    this.generoBuscado = this.juegosCollection.snapshotChanges().map(changes => {
+      return changes.map(a => {
+        const data = a.payload.doc.data() as Juego;
+        data.id = a.payload.doc.id;
+        return data;
+      });
     });
-
-    // trigger the query
-    size$.next('large');
-
-    // re-trigger the query!!!
-    size$.next('small');  
-
-  }
-
+    this.generoBuscado.subscribe(prueba => {
+      console.log(prueba);
+    })
+   
+   }
 
 }
-
-
