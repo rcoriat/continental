@@ -46,13 +46,61 @@ generoBuscado: Juego[];
       }
     }
 
-    this.busquedaGenero(this.juegoactual.genero);
-    return this.generoBuscado;
+    this.busquedaGenero(this.juegoactual.genero, this.juegoactual.titulo);
+
+
+  }
+
+  busquedaReciente(titulo: string){
+
+    for(let i=0; i<this.juegosArray.length; i++){
+      if(this.juegosArray[i].titulo == titulo){
+        this.juegoactual = this.juegosArray[i];
+      }
+    }
+
+    this.busquedaGeneroRecientes(this.juegoactual.genero, this.juegoactual.titulo);
+
+  }
+
+  busquedaDedicacion(titulo: string){
+
+    for(let i=0; i<this.juegosArray.length; i++){
+      if(this.juegosArray[i].titulo == titulo){
+        this.juegoactual = this.juegosArray[i];
+      }
+    }
+
+    this.busquedaGeneroDedicacion(this.juegoactual.genero, this.juegoactual.titulo);
+
+  }
+
+  busquedaDirector(titulo: string){
+
+    for(let i=0; i<this.juegosArray.length; i++){
+      if(this.juegosArray[i].titulo == titulo){
+        this.juegoactual = this.juegosArray[i];
+      }
+    }
+
+    this.buscaDirector(this.juegoactual.director, this.juegoactual.titulo);
+
+  }
+
+  busquedaDesarrollador(titulo: string){
+
+    for(let i=0; i<this.juegosArray.length; i++){
+      if(this.juegosArray[i].titulo == titulo){
+        this.juegoactual = this.juegosArray[i];
+      }
+    }
+
+    this.buscaDesarrollador(this.juegoactual.desarrollador, this.juegoactual.titulo);
 
   }
 
 
-  busquedaGenero(gen: string){
+  busquedaGenero(gen: string, titulo: string){
     this.juegosCollection = this.afs.collection('juegos', ref => ref.where('genero', '==', gen));
     this.juegos = this.juegosCollection.valueChanges();
     this.juegos.subscribe(prueba => {
@@ -60,4 +108,49 @@ generoBuscado: Juego[];
       this.generoBuscado = prueba;
     })
   }
+
+  busquedaGeneroRecientes(gen: string, titulo: string){
+    this.juegosCollection = this.afs.collection('juegos', ref => ref.where('genero', '==', gen));
+    var query = this.juegosCollection.ref.orderBy('salida').limit(4);
+    query.get()
+    .then(snapshot => {
+        snapshot.forEach(doc => {
+            console.log(doc.data().titulo, '=>', doc.data());
+        });
+    })
+    .catch(err => {
+        console.log('Error getting documents', err);
+    });
+  }
+
+  busquedaGeneroDedicacion(gen: string, titulo: string){
+    this.juegosCollection = this.afs.collection('juegos', ref => ref.where('genero', '==', gen));
+    var query = this.juegosCollection.ref.orderBy('dedicacion').limit(4);
+    query.get()
+    .then(snapshot => {
+        snapshot.forEach(doc => {
+            console.log(doc.data().titulo, '=>', doc.data());
+        });
+    })
+    .catch(err => {
+        console.log('Error getting documents', err);
+    });
+  }
+
+  buscaDirector(gen: string, titulo: string){
+    this.juegosCollection = this.afs.collection('juegos', ref => ref.where('director', '==', gen));
+    this.juegos = this.juegosCollection.valueChanges();
+    this.juegos.subscribe(prueba => {
+      console.log(prueba);
+    })
+  }
+
+  buscaDesarrollador(gen: string, titulo: string){
+    this.juegosCollection = this.afs.collection('juegos', ref => ref.where('desarrollador', '==', gen));
+    this.juegos = this.juegosCollection.valueChanges();
+    this.juegos.subscribe(prueba => {
+      console.log(prueba);
+    })
+  }
+
 }

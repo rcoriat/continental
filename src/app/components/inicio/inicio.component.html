@@ -4,7 +4,10 @@
 </header>
 <section id='busqueda'>
     <input id='cuadrob' [(ngModel)]="tituloactual" type="text" placeholder='Ingrese el título'>
-    <input class="waves-effect waves-light btn blue-grey darken-1" type='button' id='botonb' value='Buscar' (click)="busquedaTitulo($event); toggleChild()" >
-    <div><app-resultados [showMePartially]="showVar"></app-resultados></div>
+    <input class="waves-effect waves-light btn blue-grey darken-1" type='button' id='botonb' value='Mismo Género' (click)="busquedaTitulo($event)" >
+    <input class="waves-effect waves-light btn blue-grey darken-1" type='button' id='botonb' value='Más recientes' (click)="busquedaReciente($event)" >
+    <input class="waves-effect waves-light btn blue-grey darken-1" type='button' id='botonb' value='Nivel de dedicación' (click)="busquedaDedicacion($event)" >
+    <input class="waves-effect waves-light btn blue-grey darken-1" type='button' id='botonb' value='Mismo director' (click)="busquedaDirector($event)" >
+    <input class="waves-effect waves-light btn blue-grey darken-1" type='button' id='botonb' value='Mismo desarrollador' (click)="busquedaDesarrollador($event)" >
 </section>
 
