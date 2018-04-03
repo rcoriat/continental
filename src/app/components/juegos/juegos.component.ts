@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { JuegoService } from '../../services/juego.service';
 import { Juego } from '../../models/Juego';
 
@@ -19,5 +19,8 @@ export class JuegosComponent implements OnInit {
       this.juegos = juegos;//se guardan los juegos
     });
   }
+
+ 
+
 
 }

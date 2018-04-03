@@ -1,68 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link href="https://fonts.googleapis.com/css?family=Rubik:300" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
-    <title>Inicio</title>
-</head>
-<body>
-    <header>
-        <div id='titulo'>Continental Search</div>
-    </header>
-    <section id='busqueda'>
-        <input id='cuadrob' type="text" placeholder='Ingrese el título'>
-        <input type='button' id='botonb' value='Buscar'>
-    </section>
-    <section id='resultados'>
-        <a href="#">
-            <div class='juego-cuadro'>
-                <img src="https://firebasestorage.googleapis.com/v0/b/continentalbase.appspot.com/o/coversJuegos%2Fcover-last-guardian.jpg?alt=media&token=3631f5d9-1cb5-48c3-97e7-90acb0b843b0">
-                <div class='juego-titulo'>
-                    The Last Guardian
-                </div>
-            </div>
-        </a>
-        <a href="#">
-            <div class='juego-cuadro'>
-                <img src="https://firebasestorage.googleapis.com/v0/b/continentalbase.appspot.com/o/coversJuegos%2Fcover-last-guardian.jpg?alt=media&token=3631f5d9-1cb5-48c3-97e7-90acb0b843b0">
-                <div class='juego-titulo'>
-                    The Last Guardian
-                </div>
-            </div>
-        </a>
-        <a href="#">
-            <div class='juego-cuadro'>
-                <img src="https://firebasestorage.googleapis.com/v0/b/continentalbase.appspot.com/o/coversJuegos%2Fcover-last-guardian.jpg?alt=media&token=3631f5d9-1cb5-48c3-97e7-90acb0b843b0">
-                <div class='juego-titulo'>
-                    The Last Guardian
-                </div>
-            </div>
-        </a>
-        <a href="#">
-                <div class='juego-cuadro'>
-                    <img src="https://firebasestorage.googleapis.com/v0/b/continentalbase.appspot.com/o/coversJuegos%2Fcover-last-guardian.jpg?alt=media&token=3631f5d9-1cb5-48c3-97e7-90acb0b843b0">
-                    <div class='juego-titulo'>
-                        The Last Guardian
-                    </div>
-                </div>
-            </a>
-            <a href="#">
-                <div class='juego-cuadro'>
-                    <img src="https://firebasestorage.googleapis.com/v0/b/continentalbase.appspot.com/o/coversJuegos%2Fcover-last-guardian.jpg?alt=media&token=3631f5d9-1cb5-48c3-97e7-90acb0b843b0">
-                    <div class='juego-titulo'>
-                        The Last Guardian
-                    </div>
-                </div>
-            </a>
-            <a href="#">
-                <div class='juego-cuadro'>
-                    <img src="https://firebasestorage.googleapis.com/v0/b/continentalbase.appspot.com/o/coversJuegos%2Fcover-last-guardian.jpg?alt=media&token=3631f5d9-1cb5-48c3-97e7-90acb0b843b0">
-                    <div class='juego-titulo'>
-                        The Last Guardian
-                    </div>
-                </div>
-            </a>
-    </section>
-    <footer>Continental Search     @Team Raquel</footer>
-</body>
-</html>
+
+
+<header>
+    <div id='titulo'>Continental Search</div>
+</header>
+<section id='busqueda'>
+    <input id='cuadrob' [(ngModel)]="tituloactual" type="text" placeholder='Ingrese el título'>
+    <input class="waves-effect waves-light btn blue-grey darken-1" type='button' id='botonb' value='Buscar' (click)="busquedaTitulo($event); toggleChild()" >
+    <div><app-resultados [showMePartially]="showVar"></app-resultados></div>
+</section>
+

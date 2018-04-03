@@ -6,33 +6,6 @@
 
 }
 
-#titulo{
-    margin-top: 70px;
-    font-size: 70px;
-    text-align: center;
-    color: white;
-    font-family: rubik;
-}
-
-#busqueda{
-    margin-top: 50px;
-    text-align: center;
-}
-
-#cuadrob{
-    font-size: 30px;
-    width: 30%;
-    text-align: center;
-    border-radius: 10px;
-    border: 3px solid black;
-    padding: 0 20px;
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 2%;
-    font-family: roboto;
-    color: white;
-}
-
 
 #resultados{
     width: 70%;

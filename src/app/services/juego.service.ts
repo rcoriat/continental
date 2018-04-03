@@ -10,10 +10,10 @@ import { Juego } from '../models/Juego';
 
 @Injectable()
 export class JuegoService {
-//AQUI SE HACE LA INTERACCIÓN CON FIREBASE
 juegosCollection: AngularFirestoreCollection<Juego>;
 juegos: Observable<Juego[]>;
-juegoID: Observable<Juego[]>;
+juegosArray: Juego[];
+juegoactual: Juego;
 
 
   constructor(public afs: AngularFirestore) {
@@ -25,14 +25,28 @@ juegoID: Observable<Juego[]>;
         return data;
       });
     });
+
+    let i=0;
+
+    this.juegos.subscribe(prueba => {
+      this.juegosArray = prueba;
+    })
   }
 
   getJuegos(){
     return this.juegos;
   }
 
-  getIdTitulo(){
-    
+  busquedaTitulo(titulo: string){
+
+    for(let i=0; i<this.juegosArray.length; i++){
+      if(this.juegosArray[i].titulo == titulo){
+        this.juegoactual = this.juegosArray[i];
+      }
+    }
+
+    console.log(this.juegoactual);
+
   }
 
 
