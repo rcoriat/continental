@@ -8,6 +8,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/combineLatest';
 import { Juego } from '../models/Juego';
 import { Subject } from 'rxjs/Subject';
+import { switchMap } from 'rxjs/operator/switchMap';
 
 @Injectable()
 export class JuegoService {
@@ -50,20 +51,11 @@ generoBuscado: Observable<Juego[]>;
   }
 
 
-
   busquedaGenero(gen: string){
-    this.juegosCollection = this.afs.collection('juegos', ref => ref.where('genero', '==', 'gen'));
-    this.generoBuscado = this.juegosCollection.snapshotChanges().map(changes => {
-      return changes.map(a => {
-        const data = a.payload.doc.data() as Juego;
-        data.id = a.payload.doc.id;
-        return data;
-      });
-    });
-    this.generoBuscado.subscribe(prueba => {
-      console.log(prueba);
+    this.juegosCollection = this.afs.collection('juegos', ref => ref.where('genero', '==', gen));
+    this.juegos = this.juegosCollection.valueChanges();
+    this.juegos.subscribe(prueba => {
+      console.log(prueba)
     })
-   
-   }
-
+  }
 }
